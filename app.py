@@ -156,23 +156,17 @@ if check_flight():
 
     if ss.stage == "scoring":
         manid = st.slider("select manoeuvre", 1, 17, 1)
-        #man=st.selectbox("select manoeuvre", [m.info.short_name for m in ss.p23_def])
-
         man = ss.intended[manid-1]
-        elid = st.slider("select element", 1, len(man.elements.data), 1)
-        el=man.elements[elid-1]
+
 
         aligned = man.get_data(ss.aligned)
         intended = man.get_data(ss.intended_template)
         corrected = man.get_data(ss.corrected_template)
         
-        transform = man.get_data(ss.aligned)[0].transform
         results =  ss.p23_def[man.uid].mps.collect(man)
 
-        intra_results = man.analyse(
-            man.get_data(ss.aligned),
-            man.get_data(ss.intended_template)
-        )
+        intra_results = man.analyse(aligned,intended)
+
         interdg=results.downgrade()
         intradg = intra_results.downgrade()
 
@@ -186,9 +180,22 @@ if check_flight():
         st.write("Inter Element Downgrades:")
         st.dataframe(results.downgrade_df())
 
+        elid = st.slider("select element", 1, len(man.elements.data), 1)
+        el=man.elements[elid-1]
+
         st.write(f"Intra Element Results for element {el.uid}, {el.describe()}")
 
+        flown = el.get_data(aligned)
+        template = el.get_data(intended).relocate(flown.pos[0])
+        flown_lc =  el.setup_analysis_state(flown, template)
+        template_lc =  el.setup_analysis_state(template, template)
+
+        fig = plotsec(flown_lc, nmodels=5, scale=2, color="red")
+        fig = plotsec(template_lc, nmodels=5, scale=2, color="blue", fig=fig)
+        st.plotly_chart(fig)
+
         st.dataframe(intra_results[el.uid].results.downgrade_df())
+
 
 
     if st.button("remove log"):
