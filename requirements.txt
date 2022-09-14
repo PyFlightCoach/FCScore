@@ -1,2 +1,14 @@
 streamlit
 streamlit_plotly_events
+nbformat
+Jinja2
+numpy
+pandas
+pint
+fire
+loguru
+scipy>=1.7.1
+plotly
+fastdtw
+pyperclip
+pymavlink
