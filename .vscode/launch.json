@@ -16,11 +16,9 @@
             "name": "debug streamlit",
             "type": "python",
             "request": "launch",
-            "program": "app.py",
-            "args": [
-                "run",
-                "run.py"
-            ]
+            "module": "streamlit",
+            "args": ["run","${file}"],
+            "cwd": "${workspaceFolder}"
         }
 
     ]
