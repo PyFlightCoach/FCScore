@@ -69,8 +69,10 @@ if __name__ == '__main__':
     else:
         
         if ss.stage == Stage.SELECTSCHEDULE: 
-            st.write(f"start sequence time {t_from_i(ss.flight_start)}")
-            st.write(f"end sequence time {t_from_i(ss.flight_end)}")
+            st.write(f"new sequence duration {ss.flown.duration}")
+            
             st.write(f"moving to next stage: {ss.stage}")
+            if st.button("save flown"):
+                ss.flown.to_csv("test_data/flown_scored_state.csv")
 
             

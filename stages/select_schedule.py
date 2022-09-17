@@ -22,6 +22,7 @@ def write():
 
     if st.button("confirm sequence selection"):
         ss.stage += 1
+        st.experimental_rerun()
 
 
 if __name__ == '__main__':
