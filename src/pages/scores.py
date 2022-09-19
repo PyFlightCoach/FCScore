@@ -6,14 +6,14 @@ import plotly.express as px
 
 def write():
     manid = st.slider("select manoeuvre", 1, 17, 1)
-    man = ss.p23[manid-1]
+    man = ss.intended[manid-1]
 
 
     aligned = man.get_data(ss.aligned)
     intended = man.get_data(ss.template)
     corrected = man.get_data(ss.corrected_template)
 
-    results =  ss.p23_def[man.uid].mps.collect(man)
+    results =  ss.definition[man.uid].mps.collect(man)
 
     intra_results = man.analyse(aligned,intended)
 

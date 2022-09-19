@@ -1,4 +1,4 @@
-from stages import Stage, t_from_i
+from src.pages import Stage, t_from_i
 import streamlit as st
 ss = st.session_state
 
@@ -60,11 +60,14 @@ def write():
 
 if __name__ == '__main__':
     from flightanalysis import State
+    from pathlib import Path
     if not "stage" in ss:
         ss.stage = Stage.STARTSEQUENCE
         ss.flown = State.from_csv("test_data/flown_state.csv")
 
     if ss.stage == Stage.STARTSEQUENCE or ss.stage == Stage.ENDSEQUENCE:
+        with st.expander("Description"):
+            st.markdown(Path(__file__.replace(".py", ".md")).read_text())
         write()
     else:
         

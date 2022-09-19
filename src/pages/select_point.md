@@ -1,0 +1,3 @@
+### Select Start and End of Scored Flight
+
+FCScore needs to know where the scored flight starts and finishes. The graph below shows a representation of your flight, with the red and blue lines representing a trace of the left and right wingtips. Click on the graph to reposition the green dot to the start/end point of the sequence. If you can't see the position easily use the slider to show a subset of the data. Once you are happy with the start/end point click on the button at the bottom to confirm it. 

@@ -5,13 +5,15 @@ import os
 from flightanalysis import State, Box
 from flightdata import Flight
 from io import StringIO
-from stages import Stage
-
+from src.pages import Stage
+from pathlib import Path
 
 
 ss = st.session_state
 
+
 def write():
+    
 
     bin_file = st.file_uploader("Upload a BIN File", ["BIN", "bin"])
     box_file = st.file_uploader("Upload a box file", ["F3A", "f3a"])    
@@ -36,7 +38,11 @@ if __name__ == '__main__':
         ss.stage = Stage.START
 
     if ss.stage == Stage.START:
+        
+        with st.expander("Description"):
+            st.markdown(Path(__file__.replace(".py", ".md")).read_text())
         write()
     else:
+        
         st.write(f"parsed log length {len(ss.flown.data)}")
         st.write(ss.stage)
