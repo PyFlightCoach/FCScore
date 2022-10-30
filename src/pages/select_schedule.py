@@ -24,7 +24,7 @@ def write():
     
     populate(_sch)
 
-    st.plotly_chart(plotsec(ss.template, scale=3))
+    st.plotly_chart(plotsec(ss.template, scale=3), use_container_width=True)
 
     if st.button("confirm sequence selection"):
         ss.stage += 1

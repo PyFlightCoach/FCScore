@@ -26,7 +26,7 @@ def write():
     st.title(f"{man.uid}: {score}")
 
 
-    st.plotly_chart(plotsec(aligned, nmodels=10, scale=5))
+    st.plotly_chart(plotsec(aligned, nmodels=10, scale=5), use_container_width=True)
 
     with st.expander("Inter Element Downgrades"):
         st.dataframe(results.downgrade_df())
@@ -51,6 +51,6 @@ def write():
         #res = el.intra_scoring.dgs(mdf)
         col = st.selectbox("plot criteria", mdf.columns)
         fig = px.scatter(mdf, y=col, width=600, height=300)
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
 
         st.dataframe(intra_results[el.uid].results.downgrade_df())

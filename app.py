@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 import streamlit as st
+st. set_page_config(layout="wide")
 ss = st.session_state
 
 from src.pages import *

@@ -14,10 +14,10 @@ def write():
     match ss.stage:
         case Stage.STARTSEQUENCE:
             label = "flight_start"
-            default=1000
+            default=ss.default_start_offset
         case Stage.ENDSEQUENCE:
             label = "flight_end"
-            default = len(ss.flown.data) - 1000
+            default = len(ss.flown.data) - ss.default_end_offset - 1
 
     if not label in ss:
         ss[label] = default
@@ -61,9 +61,11 @@ def write():
 if __name__ == '__main__':
     from flightanalysis import State
     from pathlib import Path
-    if not "stage" in ss:
-        ss.stage = Stage.STARTSEQUENCE
-        ss.flown = State.from_csv("test_data/flown_state.csv")
+
+    ss.stage = Stage.STARTSEQUENCE
+    ss.flown = State.from_csv("test_data/flown_state.csv")
+    ss.default_start_offset = 0
+    ss.default_end_offset = 0
 
     if ss.stage == Stage.STARTSEQUENCE or ss.stage == Stage.ENDSEQUENCE:
         with st.expander("Description"):
