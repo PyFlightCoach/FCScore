@@ -1,2 +1,0 @@
-### Check alignment
-For good flights the alignment process works well, but not always. For example if there is a small deviation in a line before a radius it could mistake the deviation and the following section of line for part of the radius. The alignment will therefore normally need a manual check, to be facilitated by the Flight Coach Plotter. For now, we just assume the flight was good and the alignment worked well. You can look through the manoeuvres here to see if that is true. 
