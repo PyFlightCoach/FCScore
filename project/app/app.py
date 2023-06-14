@@ -24,16 +24,25 @@ server = app.server
 
 app.layout = html.Div(
     [
-        dbc.Row([html.Div([dcc.Upload(
+        dbc.Row([dcc.Upload(
                 id='upload-json',
                 children=html.Div(['Drag and Drop or ',html.A('Select File')]),
-                style={'width': '100%','height': '60px'})
-        ])]),
+                style={
+                    'width': '100%',
+                    'height': '60px',
+                    'lineHeight': '60px',
+                    'borderWidth': '1px',
+                    'borderStyle': 'dashed',
+                    'borderRadius': '5px',
+                    'textAlign': 'center',
+                    'margin': '10px'
+                })
+        ]),
         dbc.Row(
             [
                 dbc.Col(
                     [
-                        dbc.Row(DataTable(
+                        DataTable(
                             id='score-table', 
                             fill_width=False, 
                             columns=[
@@ -41,9 +50,9 @@ app.layout = html.Div(
                                 dict(id="k", name="k", type="numeric"),
                                 dict(id="score", name="score", type="numeric", format=Format(precision=2, scheme=Scheme.decimal)),
                             ]
-                        )), 
-                        dbc.Row(html.H2(id="total-score"))
-                    ], width=3, align="center"),
+                        ), 
+                        html.H2(id="total-score")
+                    ], width=3),
                 dbc.Col(dcc.Graph(id='plot-analysis', style={'height': '90vh'}))
             ]
         )
@@ -62,7 +71,7 @@ def parsefcj(content):
     state = State.from_flight(flight, box).splitter_labels(data["mans"])
     sdef = get_schedule_definition(data["parameters"]["schedule"][1])
     analyses.clear()
-    for mid in range(2):
+    for mid in range(17):
         analyses.append(ManoeuvreAnalysis.build(sdef[mid], state.get_meid(mid+1)))
     
     df = pd.DataFrame([[an.mdef.info.short_name, an.mdef.info.k, an.score] for an in analyses], columns=["name", "k", "score"])
@@ -87,7 +96,7 @@ def update_output(list_of_contents):
 @app.callback(Output('plot-analysis', 'figure'), Input('score-table', 'active_cell'))
 def update_graphs(active_cell):
     if active_cell:
-        return analyses[active_cell["row"]].plot_3d()
+        return analyses[active_cell["row"]].plot_3d(nmodels=30)
     else:
         return go.Figure()
     
