@@ -26,7 +26,7 @@ from threading import Thread
 app_data = {}
 
 app = Dash(__name__, external_stylesheets = [dbc.themes.BOOTSTRAP])
-
+server = app.server
 def serve_layout():
     session_id = str(uuid4())
 
