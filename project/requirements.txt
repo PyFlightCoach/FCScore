@@ -7,7 +7,7 @@ werkzeug
 pfc-geometry
 ardupilot-log-reader
 flightdata
-flightanalysis==0.1.5
+flightanalysis==0.1.6
 flightplotting
 plotly
 dash_bootstrap_components
