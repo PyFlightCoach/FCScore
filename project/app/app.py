@@ -23,6 +23,16 @@ from threading import Thread
 
 app_data = {}
 
+def cleanup():
+    ad = {k: data["last_hb"] for k, data in app_data.items()}
+    last_allowed_hb = time() - 10
+    pop_list = [k for k, v in ad.items() if last_allowed_hb > v]
+    
+    for pop_sess in pop_list:
+        print(f"removing user {pop_sess}")
+        app_data.pop(pop_sess)
+
+
 app = Dash(__name__, external_stylesheets = [dbc.themes.BOOTSTRAP])
 server = app.server
 def serve_layout():
@@ -30,18 +40,19 @@ def serve_layout():
 
     app_data[session_id] = dict(
         started = time(),
-        status = [f"user connected at {datetime.now()}, session_id = {session_id}, active users = len({app_data})"],
+        status = ["initializing"],
         last_hb = time(),
         analysis = ScheduleAnalysis(),
         q = Queue(),
         p = None,
     )
+    app_data[session_id]["status"].append([f"user connected at {datetime.now()}, session_id = {session_id}, active users = {len(app_data)}"],)
     return html.Div(
     [
         dcc.Store(data=session_id, id='session-id'),
         dbc.Row([dbc.Col(dcc.Upload(
                 id='upload-json',
-                children=html.Div(['Drag and Drop or ',html.A('Select File')]),
+                children=html.Div(['Drag and Drop or ',html.A('Select FC json file')]),
                 style={
                     'width': '100%',
                     'height': '30px',
@@ -56,8 +67,11 @@ def serve_layout():
         ],justify="center"),
         dbc.Row(
             [
+
                 dbc.Col(
                     [
+                        html.P("Once a json file is loaded scores should start to appear in the table below"),
+                        html.P("You can click on a row of the table to see a plot of the flown manoeuvre and the corrected template"),
                         DataTable(
                             id='score-table', 
                             fill_width=False, 
@@ -145,6 +159,7 @@ def update_status(i, session_id):
             ma = ManoeuvreAnalysis.from_dict(message)
             ad["analysis"].add(ma)
             ad["status"].append(f"Completed Analysis of {ma.mdef.info.name}")
+    cleanup()
     return ad["status"][-1], ad["analysis"].summary_df().to_dict('records'), ad["analysis"].total_score()
 
 
@@ -160,20 +175,8 @@ def update_graphs(active_cell, session_id):
         return go.Figure()
 
 
-def cleanup():
-    while True:
-        sleep(5)
-        ad = {k: data["last_hb"] for k, data in app_data.items()}
-        last_allowed_hb = time() - 10
-        pop_list = [k for k, v in ad.items() if last_allowed_hb > v]
-#        for session_id, data in app_data.items():
-#            if time() > data["last_hb"] + 5:
-#                pop_list.append(session_id)
-            
-        for pop_sess in pop_list:
-            app_data.pop(pop_sess)
+
 
 if __name__ == "__main__":
-    th = Thread(target=cleanup, daemon=True).start()
 
     app.run_server(host="0.0.0.0", port=8050, debug=True)
