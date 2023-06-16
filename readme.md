@@ -3,4 +3,4 @@ https://towardsdatascience.com/deploy-containerized-plotly-dash-app-to-heroku-wi
 
 docker build -t fcscore project/.
 
-docker run --rm -p 8050:8050 fcscore --name=fcscore
+docker run --rm -p 8050:8050 --name=fcscore fcscore

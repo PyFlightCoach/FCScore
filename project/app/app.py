@@ -7,11 +7,9 @@ import plotly.express as px
 from json import load
 from io import StringIO
 import base64
-from flightanalysis import State, Box
-from flightanalysis.data import get_schedule_definition
-from flightanalysis.schedule import *
-from flightanalysis.fc_score import ManoeuvreAnalysis, ScheduleAnalysis
+from flightanalysis import *
 from typing import List
+
 from flightdata import Flight
 import numpy as np 
 import pandas as pd
@@ -32,7 +30,7 @@ def serve_layout():
 
     app_data[session_id] = dict(
         started = time(),
-        status = [f"user connected at {datetime.now()}, session_id = {session_id}"],
+        status = [f"user connected at {datetime.now()}, session_id = {session_id}, active users = len({app_data})"],
         last_hb = time(),
         analysis = ScheduleAnalysis(),
         q = Queue(),
