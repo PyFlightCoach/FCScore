@@ -78,8 +78,9 @@ def serve_layout():
                             columns=[
                                 dict(id="name", name="name"),
                                 dict(id="k", name="k", type="numeric"),
-                                dict(id="pos_dg", name="pos_dg", type="numeric", format=Format(precision=2, scheme=Scheme.decimal)),
-                                dict(id="roll_dg", name="roll_df", type="numeric", format=Format(precision=2, scheme=Scheme.decimal)),
+                                dict(id="inter_dg", name="inter_dg", type="numeric", format=Format(precision=2, scheme=Scheme.decimal)),
+                                dict(id="intra_dg", name="intra_dg", type="numeric", format=Format(precision=2, scheme=Scheme.decimal)),
+                                dict(id="exit_dg", name="exit_dg", type="numeric", format=Format(precision=2, scheme=Scheme.decimal)),
                                 dict(id="score", name="score", type="numeric", format=Format(precision=2, scheme=Scheme.decimal)),
                             ]
                         ), 
@@ -159,6 +160,13 @@ def update_status(i, session_id):
                 pass
         elif isinstance(message, dict):
             ma = ManoeuvreAnalysis.from_dict(message)
+            
+            ma.intra_dgs = ma.mdef.mps.collect(ma.intended)
+            ma.intra_dg = sum([dg.value for dg in ma.intra_dgs])
+
+            ma.inter_dgs = ma.intended.analyse(ma.aligned, ma.intended_template)
+            ma.inter_dg = ma.inter_dgs.downgrade()
+
             ad["analysis"].add(ma)
             ad["status"].append(f"Completed Analysis of {ma.mdef.info.name}")
     cleanup()
@@ -167,17 +175,17 @@ def update_status(i, session_id):
 
     for ma in ad["analysis"]:
         scores.append(dict(
-            name=ma.mdef.info.name,
+            name=ma.mdef.info.short_name,
             k=ma.mdef.info.k,
-            pos_dg=np.sum(abs(ma.aligned.pos - ma.corrected_template.pos) * ma.aligned.dt / 500),
-            roll_dg = np.sum(np.abs(Quaternion.body_axis_rates(ma.aligned.att, ma.corrected_template.att).x) * ma.aligned.dt / 40)
+            inter_dg = ma.inter_dg,
+            intra_dg = ma.intra_dg,
         ))
 
     if len(scores) > 0:
         scores = pd.DataFrame(scores)
-        scores["score"] = 10 - scores.pos_dg - scores.roll_dg
+        scores["score"] = np.maximum(0, 10 - scores.inter_dg - scores.intra_dg)
     else:
-        scores = pd.DataFrame(columns = ["name","k","pos_dg","roll_dg","score"])
+        scores = pd.DataFrame(columns = ["name","k", "inter_dg", "intra_dg", "exit_dg", "score"])
     return ad["status"][-1], scores.to_dict('records'), sum(scores.score * scores.k)
 
 @app.callback(
