@@ -79,7 +79,7 @@ def serve_layout():
                                 dict(id="name", name="name"),
                                 dict(id="k", name="k", type="numeric"),
                                 dict(id="pos_dg", name="pos_dg", type="numeric", format=Format(precision=2, scheme=Scheme.decimal)),
-                                dict(id="roll_df", name="roll_df", type="numeric", format=Format(precision=2, scheme=Scheme.decimal)),
+                                dict(id="roll_dg", name="roll_df", type="numeric", format=Format(precision=2, scheme=Scheme.decimal)),
                                 dict(id="score", name="score", type="numeric", format=Format(precision=2, scheme=Scheme.decimal)),
                             ]
                         ), 
@@ -165,10 +165,10 @@ def update_status(i, session_id):
 
     scores = []
 
-    for ma in ad.values():
+    for ma in ad["analysis"]:
         scores.append(dict(
             name=ma.mdef.info.name,
-            k=ma.mdef.info.m,
+            k=ma.mdef.info.k,
             pos_dg=np.sum(abs(ma.aligned.pos - ma.corrected_template.pos) * ma.aligned.dt / 500),
             roll_dg = np.sum(np.abs(Quaternion.body_axis_rates(ma.aligned.att, ma.corrected_template.att).x) * ma.aligned.dt / 40)
         ))
@@ -177,7 +177,7 @@ def update_status(i, session_id):
         scores = pd.DataFrame(scores)
         scores["score"] = 10 - scores.pos_dg - scores.roll_dg
     else:
-        scores = pd.DataFrame()
+        scores = pd.DataFrame(columns = ["name","k","pos_dg","roll_dg","score"])
     return ad["status"][-1], scores.to_dict('records'), sum(scores.score * scores.k)
 
 @app.callback(
