@@ -19,7 +19,7 @@ from datetime import datetime
 from time import time, sleep
 from uuid import uuid4
 from threading import Thread
-
+from geometry import Quaternion
 
 app_data = {}
 
@@ -160,6 +160,17 @@ def update_status(i, session_id):
             ad["analysis"].add(ma)
             ad["status"].append(f"Completed Analysis of {ma.mdef.info.name}")
     cleanup()
+
+    scores = []
+
+    for ma in app_data:
+        scores.append(dict(
+            name=ma.mdef.info.name,
+            k=ma.mdef.info.m,
+            pos_dg=np.cumsum(abs(ma.aligned.pos - ma.corrected_template.pos) * ma.aligned.dt / 500),
+            roll_dg = np.cumsum(np.abs(Quaternion.body_axis_rates(ma.aligned.att, ma.corrected_template.att).x) * ma.aligned.dt / 40)
+        ))
+
     return ad["status"][-1], ad["analysis"].summary_df().to_dict('records'), ad["analysis"].total_score()
 
 
