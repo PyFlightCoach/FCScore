@@ -213,7 +213,7 @@ def update_graphs(active_cell, session_id):
         intra_df = ma.intra_dgs.downgrade_df().round(2).reset_index()
         intra_tab = DataTable( intra_df.to_dict('records'), [{"name": i, "id": i} for i in intra_df.columns])
 
-        return [graph, html.H1("Inter Element Downgrades"), inter_tab, html.H1("Intra Element Downgrades") intra_tab]
+        return [graph, html.H1("Inter Element Downgrades"), inter_tab, html.H1("Intra Element Downgrades"), intra_tab]
     raise PreventUpdate()
 
 
