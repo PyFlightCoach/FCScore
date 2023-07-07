@@ -170,17 +170,28 @@ def update_scores(i, session_id):
             if not hasattr(ma, "intra_dg"):
                 ma.intra_dgs = ma.intended.analyse(ma.aligned, ma.intended_template)
                 ma.intra_dg = ma.intra_dgs.downgrade()
+
             if not hasattr(ma, "inter_dg"):
                 ma.inter_dgs = ma.mdef.mps.collect(ma.intended)
                 ma.inter_dg = sum([dg.value for dg in ma.inter_dgs])
 
-            scores.append(dict(
+            if not hasattr(ma, "pos_dgs"):
+                ma.pos_dgs = dict(
+                    lateral = ma.side_box(),
+                    vertical = ma.top_box(),
+                    distance = ma.distance()
+                )
+                
+            score = dict(
                 name=ma.mdef.info.short_name,
                 k=ma.mdef.info.k,
                 inter_dg = ma.inter_dg,
                 intra_dg = ma.intra_dg,
-                score = max(0, 10 - ma.inter_dg - ma.intra_dg)
-            ))
+                **{k: v.value for k, v in ma.pos_dgs.items()}
+                #score = max(0, 10 - ma.inter_dg - ma.intra_dg)
+            )
+            score["score"] = max(0, 10 - ma.inter_dg - ma.intra_dg - score["lateral"] - score["vertical"] - score["distance"])
+            scores.append(score)
         
         ad["scores"] = pd.DataFrame(scores)
         ad["total_score"] = f"{sum(ad['scores'].score * ad['scores'].k):.2f}"
