@@ -1,6 +1,5 @@
-https://towardsdatascience.com/deploy-containerized-plotly-dash-app-to-heroku-with-ci-cd-f82ca833375c
+this project combines the api and client for FCScore automatic judging for F3A competitions.
 
+cd project
 
-docker build -t fcscore project/.
-
-docker run --rm -p 8050:8050 --name=fcscore fcscore
+docker compose up
