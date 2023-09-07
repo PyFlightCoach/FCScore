@@ -1,5 +1,2 @@
-this project combines the api and client for FCScore automatic judging for F3A competitions.
+This project combines the api and client for FCScore. FCScore is a WIP tool for automatic judging at F3A competitions.
 
-cd project
-
-docker compose up
