@@ -12,4 +12,7 @@ git clone git@github.com:PyFlightCoach/FCScore.git\
 cd FCScore\
 git submodule update --init --recursive\
 cd project\
-docker compose up
+docker compose up\
+\
+\
+Once it is running, open a web browser to: localhost/5173\
