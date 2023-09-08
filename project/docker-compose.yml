@@ -2,10 +2,12 @@ version: "3.8"
 services:
   server:
     build: ./FCScoreServer
+    image: thomasdavid/fcs-server:latest
     ports:
       - 5000:5000
   client:
     build: ./FCScoreClient
+    image: thomasdavid/fcs-client:latest
     ports:
       - 5173:5173
     environment:
