@@ -5,7 +5,7 @@ To run:\
 git clone git@github.com:PyFlightCoach/FCScore.git\
 cd FCScore/project\
 docker compose pull\
-docker compose start\
+docker compose -p project start\
 \
 To build:\
 git clone git@github.com:PyFlightCoach/FCScore.git\
@@ -16,3 +16,4 @@ docker compose up\
 \
 \
 Once it is running, open a web browser to: localhost/5173\
+to stop the server: docker compose -p project kill\
