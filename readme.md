@@ -6,8 +6,7 @@ git clone git@github.com:PyFlightCoach/FCScore.git\
 cd FCScore/project\
 docker compose pull\
 docker compose start\
-
-
+\
 To build:\
 git clone git@github.com:PyFlightCoach/FCScore.git\
 cd FCScore\
