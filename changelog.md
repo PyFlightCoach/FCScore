@@ -10,10 +10,9 @@ TD - Proces for manual adjustment of sequence alignment is not logical\
 AU - need an easy mode\
 TD - track visibility is not always correct. change to scale based on angle between view vector and the velocity error, rather than the axis the error happens about.\
 TD - Y and Z track visibility need to be considered together. For example getting closer can hide a reduction in height.\
-AU - need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.\
-AU - Display version number
+AU - need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.
 
-#### Client: next, Server: next, 20/09/2023
+#### Client: 4373dd3, Server: e986601, 20/09/2023
 Improve measurement smoothing in intra element criteria\
 Calculate average radius based on average weighted with incremental angle\
 Sequence alignment label squashing Bug Fix\
@@ -29,5 +28,6 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Initial Version
 
 #### Closed Issues
+fixed 20/09/2023 - AU - Display version number\
 fixed 20/09/2023 - AU - error in P25 loop, sometimes gives negative downgrades and incorrect intended templates\
 fixed 14/09/2023 - AU - P23 figure M exited in wrong direction, not zeroed and remaining sequence scored when it should be zero.
