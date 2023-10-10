@@ -8,10 +8,15 @@ TD - Roll angle visibility can be too easy, take highest visibility from anywher
 TD - snaps and spins are not currently assessed\
 TD - Proces for manual adjustment of sequence alignment is not logical\
 AU - need an easy mode\
-TD - track visibility is not always correct. change to scale based on angle between view vector and the velocity error, rather than the axis the error happens about.\
-TD - Y and Z track visibility need to be considered together. For example getting closer can hide a reduction in height.\
-AU - need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.
+AU - need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.\
+TD - allow picking up some of previous / next manoeuvre when splitting has been done poorly.
 
+#### Client: next, Server: next
+
+#### Client: 708e39b, Server: 040d7a5, 10/10/2023
+Update measuement data structure\
+Improve visibility factoring to account for combined y and z track errors.\
+Occasional errors with detecting sequence direction
 #### Client: 4373dd3, Server: e986601, 20/09/2023
 Improve measurement smoothing in intra element criteria\
 Calculate average radius based on average weighted with incremental angle\
@@ -25,9 +30,11 @@ First pass at visibility factoring for Inter Element Criteria\
 Force direction of template generation to be correct wrt first manoeuvre in sequence, not driven by flight direction of current manoeuvre.
 
 #### Client: f592d7f, Server: 92acc4b, 13/09/2023
-Initial Version
+Start of changelog
 
 #### Closed Issues
+fixed 10/10/2023 - TD - track visibility is not always correct. change to scale based on angle between view vector and the velocity error, rather than the axis the error happens about.\
+fixed 10/10/2023 - TD - Y and Z track visibility need to be considered together. For example getting closer can hide a reduction in height.\
 fixed 20/09/2023 - AU - Display version number\
 fixed 20/09/2023 - AU - error in P25 loop, sometimes gives negative downgrades and incorrect intended templates\
 fixed 14/09/2023 - AU - P23 figure M exited in wrong direction, not zeroed and remaining sequence scored when it should be zero.
