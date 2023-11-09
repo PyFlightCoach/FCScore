@@ -11,7 +11,10 @@ AU - need an easy mode\
 AU - need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.\
 TD - allow picking up some of previous / next manoeuvre when splitting has been done poorly.
 
-#### Client: next, Server: next
+#### Client: c65cff8, Server: 4d2db89
+Add colouring to intra table and graphs to highlight more significant downgrades.\
+Restructuring of base data structures.\
+Remove outliers from measurements before smoothing to avoid bad data causing downgrades.\
 Allow the definition of more than one centre per manoeuvre as centred points or elements in the template and populate the positioning information page in the client.\
 Add position visibility to all visibility calculations.\
 Apply smoothing before taking the magnitude of the measurement, so it goes to zero when.\
