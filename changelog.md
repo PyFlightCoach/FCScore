@@ -6,10 +6,16 @@ AU - Corrected template often does not look all that close to the flown data. pe
 TD - line before and after spin and stallturn is scored as a normal line, where in fact track criteria should be relaxed slightly\
 TD -Visibility can be too easy (or hard), take highest (or some average) visibility from anywhere between flown and template, rather than current visiblity of flown attitude. For example, with roll angle if the wings pass through the sight vector it is very obvious.\
 TD - snaps and spins are not currently assessed\
-TD - Proces for manual adjustment of sequence alignment is not logical\
-AU - need an easy mode\
 AU - need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.\
 TD - allow picking up some of previous / next manoeuvre when splitting has been done poorly.
+
+#### Client: f70966, Server: 1f05393
+Add an Easy mode\
+Improve appearance and plots\
+simplify alignment adjustment\
+run a low pass filter over all log data before doing any processing\
+only smooth data if its passing through a ratio criteria\
+include example log\
 
 #### Client: c65cff8, Server: 4d2db89
 Add colouring to intra table and graphs to highlight more significant downgrades.\
@@ -42,6 +48,8 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 19/12/2023 - TD - Proces for manual adjustment of sequence alignment is not logical\
+fixed 19/12/2023 - AU - need an easy mode\
 fixed 30/10/2023 - AP - Centering criteria does not currently reflect a judges approach. Within a single manoeuvre a human judge will have a number of center checks at key points, rather than a single check of the overall geometry. Add optional additional center checks to the sequence definition.\
 fixed 10/10/2023 - TD - track visibility is not always correct. change to scale based on angle between view vector and the velocity error, rather than the axis the error happens about.\
 fixed 10/10/2023 - TD - Y and Z track visibility need to be considered together. For example getting closer can hide a reduction in height.\

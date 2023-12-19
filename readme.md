@@ -7,3 +7,7 @@ docker compose up\
 \
 Once it is running, open a web browser to: localhost/5173\
 to stop the server: docker compose -p project kill
+\
+\
+To Deploy:\
+https://www.docker.com/blog/how-to-deploy-containers-to-azure-aci-using-docker-cli-and-compose/
