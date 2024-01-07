@@ -3,11 +3,21 @@
 #### Outstanding Issues
 TD - Options on Maneouvres do not work then the number or order of the elements change, only roll directions. This is a problem for the top hat in P25. It will need manual intervention to specify which option was flown, or more advanced element recognition. 
 AU - Corrected template often does not look all that close to the flown data. perhaps an issue with averaging.\
-TD - line before and after spin and stallturn is scored as a normal line, where in fact track criteria should be relaxed slightly\
-TD -Visibility can be too easy (or hard), take highest (or some average) visibility from anywhere between flown and template, rather than current visiblity of flown attitude. For example, with roll angle if the wings pass through the sight vector it is very obvious.\
-TD - snaps and spins are not currently assessed\
-AU - need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.\
-TD - allow picking up some of previous / next manoeuvre when splitting has been done poorly.
+TD - Line before and after spin and stallturn is scored as a normal line, where in fact track criteria should be relaxed slightly\
+TD - Snaps and spins are not currently assessed\
+AU - Need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.\
+TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
+
+
+#### Client: next, Server: next
+Include split point optimisation to give minimum intra downgrade.\
+Correct roll angle visibility round loops and stallturns.\
+Correct roll angle measurement to look at the angle between a body frame vector and the corresponding ref frame vector, rather than just comparing flown to template.\
+Add new bounded criteria, to downgrade only when the measurement is above, below, inside or outside a bound. This is useful for assessing things like stallturn
+width, snap angle of attack etc.\
+Fix bug that causes crashes when intra plot is clicked whilst a criteria is active.\
+Generally refactor client side logic.\
+Added option to export analysis and load from exported analysis.
 
 #### Client: f70966, Server: 1f05393
 Add an Easy mode\
@@ -48,6 +58,12 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 07/01/2023 - TD -Visibility can be too easy (or hard), take highest (or some average) visibility from anywhere between flown and template, rather than current visiblity of flown attitude. For example, with roll angle if the wings pass through the sight vector it is very obvious.\
+fixed 07/01/2023 - TD - Stallturn roll angle is not correct as velocity is small.
+fixed 07/01/2023 - TD - Stallturn width and speed are not considered
+fixed 02/01/2023 - TD - DTW does not necessarily provide an optimimum split. In some cases score can be improved.
+fixed 02/01/2023 - TD - Roll angle visibility in stallturns doesn't work correctly. Better to compare angle between wing vector and vector rejection of wing vector on the template xy plane, rather than just use the normal line / loop roll angle method\
+fixed 26/12/2023 - TD - Need a means of exporting the splitting and score information to facilitate competitions, comparisons to previous versions etc.\
 fixed 19/12/2023 - TD - Proces for manual adjustment of sequence alignment is not logical\
 fixed 19/12/2023 - AU - need an easy mode\
 fixed 30/10/2023 - AP - Centering criteria does not currently reflect a judges approach. Within a single manoeuvre a human judge will have a number of center checks at key points, rather than a single check of the overall geometry. Add optional additional center checks to the sequence definition.\

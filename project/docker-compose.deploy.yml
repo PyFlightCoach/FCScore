@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+  server:
+    build: ./FCScoreServer
+    image: thomasdavid/fcs-server:latest
+    container_name: fcs-server
+    ports:
+      - 5000:5000
+    domainname: fcslvblsekdhjvb
+    deploy: 
+      resources: 
+        limits: 
+          cpus: "2"
+          memory: 2G
+        reservations: 
+          cpus: "2"
+          memory: 2G
+  client:
+    build: ./FCScoreClient
+    image: thomasdavid/fcs-client:acitest
+    container_name: fcs-client
+    ports:
+      - 5173:5173
+    domainname: fcslvblsekdhjvb
+    deploy: 
+      resources: 
+        limits: 
+          cpus: "1"
+          memory: 0.5G
+        reservations: 
+          cpus: "1"
+          memory: 0.5G
+    environment:
+      - VITE_BACKEND_URL=http://fcslvblsekdhjvb.uksouth.azurecontainer.io:5000

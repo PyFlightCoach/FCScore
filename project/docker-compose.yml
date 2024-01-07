@@ -3,11 +3,13 @@ services:
   server:
     build: ./FCScoreServer
     image: thomasdavid/fcs-server:latest
+    container_name: fcs-server
     ports:
       - 5000:5000
   client:
     build: ./FCScoreClient
     image: thomasdavid/fcs-client:latest
+    container_name: fcs-client
     ports:
       - 5173:5173
     environment:
