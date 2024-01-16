@@ -7,14 +7,18 @@ TD - Line before and after spin and stallturn is scored as a normal line, where 
 TD - Snaps and spins are not currently assessed\
 AU - Need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.\
 TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
+TD - Can't handle cross box start / finish of manoeuvres.
+TD - add plots to inter\
+TD - pyodide server option\
+TD - Better version numbering\
 
-
-#### Client: next, Server: next
+#### Client: f536a35, Server: 9ca4322
+run 16 instances of backend to speed things up a bit\
 Include split point optimisation to give minimum intra downgrade.\
 Correct roll angle visibility round loops and stallturns.\
 Correct roll angle measurement to look at the angle between a body frame vector and the corresponding ref frame vector, rather than just comparing flown to template.\
 Add new bounded criteria, to downgrade only when the measurement is above, below, inside or outside a bound. This is useful for assessing things like stallturn
-width, snap angle of attack etc.\
+width, snap angle of attack etc. Currently just used for snap break/recovery length and stallturn width.\
 Fix bug that causes crashes when intra plot is clicked whilst a criteria is active.\
 Generally refactor client side logic.\
 Added option to export analysis and load from exported analysis.
