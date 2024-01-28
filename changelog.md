@@ -12,6 +12,12 @@ TD - add plots to inter\
 TD - pyodide server option\
 TD - Better version numbering\
 
+
+#### Client: 00f641f0, Server: 771ea037
+Use curvature rather than radius for intra element scoring to avoid divide by zero on straight lines.\
+standardise export format between client and server.
+
+
 #### Client: f536a35, Server: 9ca4322
 run 16 instances of backend to speed things up a bit\
 Include split point optimisation to give minimum intra downgrade.\
