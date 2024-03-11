@@ -10,9 +10,10 @@ TD - Allow picking up some of previous / next manoeuvre when splitting has been 
 TD - Can't handle cross box start / finish of manoeuvres.
 TD - add plots to inter\
 TD - pyodide server option\
-TD - Better version numbering\
-TD - Continuous criteria peaks / troughs are not picking up the first / last points of a sample (should always be a peak or trough). This is causing the split optimisation to give funny results in some cases, for example at the end of loops where the curvature reduces before a line. 
+TD - Better version numbering
 
+#### Client: next, Server: next
+Fix bug in continuous criteria where final points of sample were ignored.
 
 #### Client: e8fded8, Server: d1310ef00
 Update schedule definition to cope with new flight coach plotter naming convention.
@@ -71,6 +72,7 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 11/08/2023 - TD - Continuous criteria peaks / troughs are not picking up the first / last points of a sample (should always be a peak or trough). This is causing the split optimisation to give funny results in some cases, for example at the end of loops where the curvature reduces before a line. 
 fixed 07/01/2023 - TD -Visibility can be too easy (or hard), take highest (or some average) visibility from anywhere between flown and template, rather than current visiblity of flown attitude. For example, with roll angle if the wings pass through the sight vector it is very obvious.\
 fixed 07/01/2023 - TD - Stallturn roll angle is not correct as velocity is small.
 fixed 07/01/2023 - TD - Stallturn width and speed are not considered
