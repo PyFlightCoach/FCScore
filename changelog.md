@@ -11,6 +11,8 @@ TD - Can't handle cross box start / finish of manoeuvres.
 TD - add plots to inter\
 TD - pyodide server option\
 TD - Better version numbering\
+TD - Continuous criteria peaks / troughs are not picking up the first / last points of a sample (should always be a peak or trough). This is causing the split optimisation to give funny results in some cases, for example at the end of loops where the curvature reduces before a line. 
+
 
 #### Client: e8fded8, Server: d1310ef00
 Update schedule definition to cope with new flight coach plotter naming convention.
