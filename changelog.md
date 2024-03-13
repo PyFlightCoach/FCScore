@@ -11,6 +11,7 @@ TD - Can't handle cross box start / finish of manoeuvres.
 TD - add plots to inter\
 TD - pyodide server option\
 TD - Better version numbering
+AU - error when POS / ATT data selected in the plotter rather than XKF1.
 
 #### Client: next, Server: next
 Fix bug in continuous criteria where final points of sample were ignored.
