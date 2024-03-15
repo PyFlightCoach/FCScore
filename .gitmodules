@@ -1,6 +1,6 @@
 [submodule "project/FCScoreClient"]
 	path = project/FCScoreClient
-	url = git@github.com:PyFlightCoach/FCScoreClient.git
+	url = ../FCScoreClient.git
 [submodule "project/FCScoreServer"]
 	path = project/FCScoreServer
-	url = git@github.com:PyFlightCoach/FCScoreServer.git
+	url = ../FCScoreServer.git
