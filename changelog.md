@@ -12,10 +12,11 @@ TD - pyodide server option\
 TD - Better version numbering
 AU - error when POS / ATT data selected in the plotter rather than XKF1.
 
-#### Client: next, Server: next
+#### Client: cec7e3c1fa, Server: 397ef11
 Fix bug in continuous criteria where final points of sample were ignored.\
 Add plots and colouring to Inter element results\
 Add fun 3D visualisation in summary and intra pages.\
+update docker compose file so it works in windows too.
 
 #### Client: e8fded8, Server: d1310ef00
 Update schedule definition to cope with new flight coach plotter naming convention.
