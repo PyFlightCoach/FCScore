@@ -8,13 +8,14 @@ TD - Snaps and spins are not currently assessed\
 AU - Need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.\
 TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
 TD - Can't handle cross box start / finish of manoeuvres.
-TD - add plots to inter\
 TD - pyodide server option\
 TD - Better version numbering
 AU - error when POS / ATT data selected in the plotter rather than XKF1.
 
 #### Client: next, Server: next
-Fix bug in continuous criteria where final points of sample were ignored.
+Fix bug in continuous criteria where final points of sample were ignored.\
+Add plots and colouring to Inter element results\
+Add fun 3D visualisation in summary and intra pages.\
 
 #### Client: e8fded8, Server: d1310ef00
 Update schedule definition to cope with new flight coach plotter naming convention.
@@ -73,11 +74,12 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
-fixed 11/08/2023 - TD - Continuous criteria peaks / troughs are not picking up the first / last points of a sample (should always be a peak or trough). This is causing the split optimisation to give funny results in some cases, for example at the end of loops where the curvature reduces before a line. 
+fixed 20/03/2024 - TD - add plots to inter\
+fixed 11/08/2023 - TD - Continuous criteria peaks / troughs are not picking up the first / last points of a sample (should always be a peak or trough). This is causing the split optimisation to give funny results in some cases, for example at the end of loops where the curvature reduces before a line. \
 fixed 07/01/2023 - TD -Visibility can be too easy (or hard), take highest (or some average) visibility from anywhere between flown and template, rather than current visiblity of flown attitude. For example, with roll angle if the wings pass through the sight vector it is very obvious.\
-fixed 07/01/2023 - TD - Stallturn roll angle is not correct as velocity is small.
-fixed 07/01/2023 - TD - Stallturn width and speed are not considered
-fixed 02/01/2023 - TD - DTW does not necessarily provide an optimimum split. In some cases score can be improved.
+fixed 07/01/2023 - TD - Stallturn roll angle is not correct as velocity is small.\
+fixed 07/01/2023 - TD - Stallturn width and speed are not considered\
+fixed 02/01/2023 - TD - DTW does not necessarily provide an optimimum split. In some cases score can be improved.\
 fixed 02/01/2023 - TD - Roll angle visibility in stallturns doesn't work correctly. Better to compare angle between wing vector and vector rejection of wing vector on the template xy plane, rather than just use the normal line / loop roll angle method\
 fixed 26/12/2023 - TD - Need a means of exporting the splitting and score information to facilitate competitions, comparisons to previous versions etc.\
 fixed 19/12/2023 - TD - Proces for manual adjustment of sequence alignment is not logical\
