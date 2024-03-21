@@ -12,7 +12,7 @@ TD - pyodide server option\
 TD - Better version numbering
 AU - error when POS / ATT data selected in the plotter rather than XKF1.
 
-#### Client: e8fded88d, Server: 397ef11
+#### Client: cec7e3c1fa, Server: 397ef11
 Fix bug in continuous criteria where final points of sample were ignored.\
 Add plots and colouring to Inter element results\
 Add fun 3D visualisation in summary and intra pages.\
