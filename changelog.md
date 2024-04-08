@@ -1,16 +1,29 @@
 # FCScore Changelog
 
-#### Outstanding Issues
-TD - Options on Maneouvres do not work then the number or order of the elements change, only roll directions. This is a problem for the top hat in P25. It will need manual intervention to specify which option was flown, or more advanced element recognition. 
+#### Outstanding Issues / Features
 AU - Corrected template often does not look all that close to the flown data. perhaps an issue with averaging.\
 TD - Line before and after spin and stallturn is scored as a normal line, where in fact track criteria should be relaxed slightly\
 TD - Snaps and spins are not currently assessed\
 AU - Need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.\
 TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
-TD - Can't handle cross box start / finish of manoeuvres.
+TD - Can't handle cross box start / finish of manoeuvres for IMAC.
 TD - pyodide server option\
-TD - Better version numbering
-AU - error when POS / ATT data selected in the plotter rather than XKF1.
+TD - Make version numbering more logical.\
+AU - error when POS / ATT data selected in the plotter rather than XKF1.\
+AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
+JT - error in P25 template when it is run through FCSCore./
+JT,AU - difficult to see errors are still too harsh.
+AU - adjust distance visibility factors so downgrades are less harsh in the center.
+TD - consider distance from ground reference in visibility easements.\
+
+#### Client: next, Server: next
+Handle optional manoevures where the number or order of elements changes.\
+Round down the sum of each type of intra element downgrade within a manoeuvre before adding them up.\
+Make easy the default mode and persiest between runs.\
+Include pilot and center altitude in the fc json so top box criteria works at places above sea level.\
+Refactor analysis api to standardise python and server interface and logic.\
+Add nose drop angle criteria to constrain spin alignment optimisation.\
+Add logic to count number of autorotations performed.\
 
 #### Client: cec7e3c1fa, Server: 397ef11
 Fix bug in continuous criteria where final points of sample were ignored.\
@@ -75,6 +88,12 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 08/04/2024 - JT - make easy the default mode and persist choice between runs.
+fixed 08/04/2024 - AU - round down downgrade for each criteria before adding up.\
+fixed 07/04/2024 - AU - Issue with manoeuvre positionoing, sometimes does not match position shown in the plotter.\
+fixed 07/04/2024 - TD - Options on Maneouvres do not work then the number or order of the elements change, only roll directions. This is a problem for the top hat in P25. It will need manual intervention to specify which option was flown, or more advanced element recognition.\
+fixed 25/03/2024 - TD - amount of rolls / autorotations need to be counted, just the end angle, allows unbounded optimisation in some cases and misses hard zeros.\
+fixed 25/03/2024 - TD - breaks, nose drops and recoveries are occasionally not fully constrained during split optimisation.\
 fixed 20/03/2024 - TD - add plots to inter\
 fixed 11/08/2023 - TD - Continuous criteria peaks / troughs are not picking up the first / last points of a sample (should always be a peak or trough). This is causing the split optimisation to give funny results in some cases, for example at the end of loops where the curvature reduces before a line. \
 fixed 07/01/2023 - TD -Visibility can be too easy (or hard), take highest (or some average) visibility from anywhere between flown and template, rather than current visiblity of flown attitude. For example, with roll angle if the wings pass through the sight vector it is very obvious.\
