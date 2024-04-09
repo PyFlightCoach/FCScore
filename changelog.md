@@ -13,8 +13,6 @@ AU - error when POS / ATT data selected in the plotter rather than XKF1.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 JT - error in P25 template when it is run through FCSCore./
 JT,AU - difficult to see errors are still too harsh.
-AU - adjust distance visibility factors so downgrades are less harsh in the center.
-TD - consider distance from ground reference in visibility easements.\
 
 #### Client: next, Server: next
 Handle optional manoevures where the number or order of elements changes.\
@@ -88,6 +86,8 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 09/04/2024 - AU - adjust distance visibility factors so downgrades are less harsh in the center.
+fixed 09/04/2024 - TD - consider distance from ground reference in visibility easements.\
 fixed 08/04/2024 - JT - make easy the default mode and persist choice between runs.
 fixed 08/04/2024 - AU - round down downgrade for each criteria before adding up.\
 fixed 07/04/2024 - AU - Issue with manoeuvre positionoing, sometimes does not match position shown in the plotter.\
