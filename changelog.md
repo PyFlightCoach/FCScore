@@ -2,7 +2,7 @@
 
 #### Outstanding Issues / Features
 AU - Corrected template often does not look all that close to the flown data. perhaps an issue with averaging.\
-TD - Line before and after spin and stallturn is scored as a normal line, where in fact track criteria should be relaxed slightly\
+TD - Line before and after spin and stallturn is scored as a normal line, where track criteria should be relaxed\
 TD - Snaps and spins are not currently assessed\
 AU - Need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.\
 TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
@@ -12,9 +12,12 @@ TD - Make version numbering more logical.\
 AU - error when POS / ATT data selected in the plotter rather than XKF1.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 JT - error in P25 template when it is run through FCSCore./
-JT,AU - difficult to see errors are still too harsh.
 
 #### Client: next, Server: next
+Fix bug in the P25 template loop where roll direction options were not picked up.\
+Improve Intra single downgrade plots.\
+Add smoothing to continuous absolute criteria and increase smoothing on continuous ratio criteria.\
+Improve accounting for continuous criteria region not picked up by convolve.\
 Handle optional manoevures where the number or order of elements changes.\
 Round down the sum of each type of intra element downgrade within a manoeuvre before adding them up.\
 Make easy the default mode and persiest between runs.\
@@ -86,10 +89,12 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
-fixed 09/04/2024 - AU - adjust distance visibility factors so downgrades are less harsh in the center.
+fixed 16/04/2024 - AU - round down downgrade for each criteria before adding up.\
+fixed 16/04/2024 - JT,AU - difficult to see errors are still too harsh.\
+fixed 16/04/2024 - MH - Roll angle criteria is too harsh round loops.\
+fixed 09/04/2024 - AU - adjust distance visibility factors so downgrades are less harsh in the center.\
 fixed 09/04/2024 - TD - consider distance from ground reference in visibility easements.\
-fixed 08/04/2024 - JT - make easy the default mode and persist choice between runs.
-fixed 08/04/2024 - AU - round down downgrade for each criteria before adding up.\
+fixed 08/04/2024 - JT - make easy the default mode and persist choice between runs.\
 fixed 07/04/2024 - AU - Issue with manoeuvre positionoing, sometimes does not match position shown in the plotter.\
 fixed 07/04/2024 - TD - Options on Maneouvres do not work then the number or order of the elements change, only roll directions. This is a problem for the top hat in P25. It will need manual intervention to specify which option was flown, or more advanced element recognition.\
 fixed 25/03/2024 - TD - amount of rolls / autorotations need to be counted, just the end angle, allows unbounded optimisation in some cases and misses hard zeros.\
