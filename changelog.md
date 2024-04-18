@@ -13,7 +13,7 @@ AU - error when POS / ATT data selected in the plotter rather than XKF1.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 JT - error in P25 template when it is run through FCSCore./
 
-#### Client: next, Server: next
+#### Client: cbb786b5a3, Server: 272626d7
 Fix bug in the P25 template loop where roll direction options were not picked up.\
 Improve Intra single downgrade plots.\
 Add smoothing to continuous absolute criteria and increase smoothing on continuous ratio criteria.\
