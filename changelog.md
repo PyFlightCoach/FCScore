@@ -11,7 +11,10 @@ TD - pyodide server option\
 TD - Make version numbering more logical.\
 AU - error when POS / ATT data selected in the plotter rather than XKF1.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
-JT - error in P25 template when it is run through FCSCore./
+JT - error in P25 template when it is run through FCSCore.\
+
+#### Client: next, Server: next
+pick up wind direction from first manoeuvre rather than takeoff.
 
 #### Client: cbb786b5a3, Server: 272626d7
 Fix bug in the P25 template loop where roll direction options were not picked up.\
@@ -89,6 +92,7 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 22/04/2024 - MH - error in direction selection when takeoff is perormed downwind.\
 fixed 16/04/2024 - AU - round down downgrade for each criteria before adding up.\
 fixed 16/04/2024 - JT,AU - difficult to see errors are still too harsh.\
 fixed 16/04/2024 - MH - Roll angle criteria is too harsh round loops.\
