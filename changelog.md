@@ -8,13 +8,18 @@ AU - Need to consider case of no visible line between manoeuvres. Also where the
 TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
 TD - Can't handle cross box start / finish of manoeuvres for IMAC.
 TD - pyodide server option\
-TD - Make version numbering more logical.\
 AU - error when POS / ATT data selected in the plotter rather than XKF1.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 JT - error in P25 template when it is run through FCSCore.\
 
-#### Client: next, Server: next
-pick up wind direction from first manoeuvre rather than takeoff.
+#### Client: v0.0.12, Server: v0.0.12
+Reduce convolve width for short element continuous criteriea rather than assuming linear interpolation between start and end.\
+pick up wind direction from first manoeuvre rather than takeoff.\
+Add button to recalculate scores and to rerun aligment optimisation to the alignment page.\
+display intra, inter and position downgrades on top bar whem manoeuvre is active.\
+Change roll angle visibility so it considers worst case of anywhere between flown and template.\
+Fix bug on handling alignment failures to allow manual editing and re-running.\
+Fix version numbering to use git tag rather than commit id. 
 
 #### Client: cbb786b5a3, Server: 272626d7
 Fix bug in the P25 template loop where roll direction options were not picked up.\
@@ -92,6 +97,8 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 03/05/2024 - TD - Make version numbering more logical.\
+fixed 27/04/2024 - TD - roll angle visiblity should consider worst case of anywhwere between flown and template roll angle, rather than just flown.\
 fixed 22/04/2024 - MH - error in direction selection when takeoff is perormed downwind.\
 fixed 16/04/2024 - AU - round down downgrade for each criteria before adding up.\
 fixed 16/04/2024 - JT,AU - difficult to see errors are still too harsh.\
