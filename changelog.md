@@ -11,6 +11,9 @@ TD - pyodide server option\
 AU - error when POS / ATT data selected in the plotter rather than XKF1.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 JT - error in P25 template when it is run through FCSCore.\
+TD - inter visibility, take min value of current and previous element.\
+TD - inter visilibility, consider size of the element, smaller elements are harder to see and have larger ratio errors so are disproportionately harsh.\
+TD - Intra smoothing. Factor errors down to account for reduced convolve width when sample has less than 40 datapoints. 
 
 #### Client: v0.0.12, Server: v0.0.12
 Reduce convolve width for short element continuous criteriea rather than assuming linear interpolation between start and end.\
