@@ -11,9 +11,12 @@ TD - pyodide server option\
 AU - error when POS / ATT data selected in the plotter rather than XKF1.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 JT - error in P25 template when it is run through FCSCore.\
-TD - inter visibility, take min value of current and previous element.\
 TD - inter visilibility, consider size of the element, smaller elements are harder to see and have larger ratio errors so are disproportionately harsh.\
-TD - Intra smoothing. Factor errors down to account for reduced convolve width when sample has less than 40 datapoints. 
+
+#### Client: v0.0.13, Server: v0.0.13
+reduce sample std deviation when convolve width is less than max.\
+take min visibility of current and previous element for inter element downgrades.\
+Fix the schedule positioning so that it matches the plotter.
 
 #### Client: v0.0.12, Server: v0.0.12
 Reduce convolve width for short element continuous criteriea rather than assuming linear interpolation between start and end.\
@@ -100,6 +103,9 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 07/05/2024 - TD - Position of flown data does not always match the plotter. 
+fixed 07/05/2024 - TD - inter visibility, take min value of current and previous element.\
+fixed 07/05/2024 - TD - Intra smoothing. Factor errors down to account for reduced convolve width when sample has less than 40 datapoints.\
 fixed 03/05/2024 - TD - Make version numbering more logical.\
 fixed 27/04/2024 - TD - roll angle visiblity should consider worst case of anywhwere between flown and template roll angle, rather than just flown.\
 fixed 22/04/2024 - MH - error in direction selection when takeoff is perormed downwind.\
