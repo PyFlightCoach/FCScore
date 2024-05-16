@@ -8,10 +8,17 @@ AU - Need to consider case of no visible line between manoeuvres. Also where the
 TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
 TD - Can't handle cross box start / finish of manoeuvres for IMAC.
 TD - pyodide server option\
-AU - error when POS / ATT data selected in the plotter rather than XKF1.\
+AU - error when no velocity data is available in the fc json.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 JT - error in P25 template when it is run through FCSCore.\
-TD - inter visilibility, consider size of the element, smaller elements are harder to see and have larger ratio errors so are disproportionately harsh.\
+
+#### Client: next, Server: next
+Adjust splitting logic to include first datapoint of the next label as the last value in the extracted item. \
+Fix the inter radius and inter line length criteria which had an exponent < 1.
+Adjust inter visibility factoring to accound for the size of the element. 1 if >= 0.5 of box height, scaling to 0 for zero height. Adjust visibility factor
+selection logic to suit (take max of previous and current).\
+Change intra element track visiblity round loops so it considers the loop axial vector at each point rather than interpolating between the visibility values at the start and end.\
+Make box scoring a little more harsh.
 
 #### Client: v0.0.13, Server: v0.0.13
 reduce sample std deviation when convolve width is less than max.\
@@ -103,7 +110,11 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
-fixed 07/05/2024 - TD - Position of flown data does not always match the plotter. 
+fixed 16/05/2024 - TD - Box downgrades are too kind. Perhaps change to 10 points for the whole manoeuvre 7.5 degrees outside the box, rather than 15 degrees.\
+fixed 16/05/2024 - TD - Intra track visiblity round loops doesn't make much sense.\
+fixed 15/05/2024 - TD - inter visilibility, consider size of the element, smaller elements are harder to see and have larger ratio errors so are disproportionately harsh.\
+fixed 14/05/2024 - TD - one datapoint lost when splitting.\
+fixed 07/05/2024 - TD - Position of flown data does not always match the plotter.\ 
 fixed 07/05/2024 - TD - inter visibility, take min value of current and previous element.\
 fixed 07/05/2024 - TD - Intra smoothing. Factor errors down to account for reduced convolve width when sample has less than 40 datapoints.\
 fixed 03/05/2024 - TD - Make version numbering more logical.\
