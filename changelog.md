@@ -15,7 +15,7 @@ JT - error in P25 template when it is run through FCSCore.\
 #### Client: next, Server: next
 Adjust splitting logic to include first datapoint of the next label as the last value in the extracted item. \
 Fix the inter radius and inter line length criteria which had an exponent < 1.
-Adjust inter visibility factoring to accound for the size of the element. 1 if >= 0.5 of box height, scaling to 0 for zero height. Adjust visibility factor
+Adjust inter visibility factoring to account for the size of the element. 1 if >= 0.5 of box height, scaling to 0 for zero height. Adjust visibility factor
 selection logic to suit (take max of previous and current).\
 Change intra element track visiblity round loops so it considers the loop axial vector at each point rather than interpolating between the visibility values at the start and end.\
 Make box scoring a little more harsh.
