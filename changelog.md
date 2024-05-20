@@ -12,7 +12,7 @@ AU - error when no velocity data is available in the fc json.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 JT - error in P25 template when it is run through FCSCore.\
 
-#### Client: next, Server: next
+#### Client: v0.0.14, Server: v0.0.14
 Adjust splitting logic to include first datapoint of the next label as the last value in the extracted item. \
 Fix the inter radius and inter line length criteria which had an exponent < 1.
 Adjust inter visibility factoring to account for the size of the element. 1 if >= 0.5 of box height, scaling to 0 for zero height. Adjust visibility factor
