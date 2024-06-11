@@ -11,6 +11,16 @@ TD - pyodide server option\
 AU - error when no velocity data is available in the fc json.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 JT - error in P25 template when it is run through FCSCore.\
+TD - reduce or remove smoothing on intra track criteria as downgrades are missed in short elements and this data is less noisy than curvature or roll angle.
+TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.
+TD - remove speed criteria around stallturns and spins.
+
+#### Client: next, Server: next
+Adjust inter visibility as its too harsh in many cases.\
+refactor messages to minimise data transferred.\
+Add analysis server selection option to client.\
+build client as a static site and deploy on github pages.\
+fix bug on sequence alignment where lable could be reduced to 1 data point.\
 
 #### Client: v0.0.14, Server: v0.0.14
 Adjust splitting logic to include first datapoint of the next label as the last value in the extracted item. \
