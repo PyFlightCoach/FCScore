@@ -14,8 +14,16 @@ JT - error in P25 template when it is run through FCSCore.\
 TD - reduce or remove smoothing on intra track criteria as downgrades are missed in short elements and this data is less noisy than curvature or roll angle.
 TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.
 TD - remove speed criteria around stallturns and spins.
+TD - error in speed criteria, goes to zero in some cases. 
 
-#### Client: next, Server: next
+#### Client: v0.1.1, Server: v0.1.1
+Enable output to FCJSON.\
+Move difficulty and truncate settings to server.\
+Label shift bugfix.\
+change client dockerfile so it deploys static app.\
+refactor client.
+
+#### Client: 0.1.0, Server: 0.1.0
 Adjust inter visibility as its too harsh in many cases.\
 refactor messages to minimise data transferred.\
 Add analysis server selection option to client.\

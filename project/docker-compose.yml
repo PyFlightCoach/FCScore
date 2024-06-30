@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   server:
     build: ./FCScoreServer
@@ -6,11 +5,11 @@ services:
     container_name: fcs-server
     ports:
       - 5000:5000
+    environment:
+      - CLIENTS=http://localhost:5173,https://pyflightcoach.github.io
   client:
     build: ./FCScoreClient
     image: thomasdavid/fcs-client:latest
     container_name: fcs-client
     ports:
-      - 5173:5173
-    environment:
-      - VITE_BACKEND_URL=http://localhost:5000
+      - 5173:80
