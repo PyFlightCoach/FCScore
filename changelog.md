@@ -11,10 +11,14 @@ TD - pyodide server option\
 AU - error when no velocity data is available in the fc json.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 JT - error in P25 template when it is run through FCSCore.\
-TD - reduce or remove smoothing on intra track criteria as downgrades are missed in short elements and this data is less noisy than curvature or roll angle.
 TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.
 TD - remove speed criteria around stallturns and spins.
 TD - error in speed criteria, goes to zero in some cases. 
+
+#### Client: v0.1.2, Server: v0.1.2
+Add example flight.\
+Add instructions to main page.\
+add variable convolve width for different kinds of intra criteria.
 
 #### Client: v0.1.1, Server: v0.1.1
 Enable output to FCJSON.\
@@ -128,6 +132,7 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 01/07/2024 - TD - reduce or remove smoothing on intra track criteria as downgrades are missed in short elements and this data is less noisy than curvature or roll angle.
 fixed 16/05/2024 - TD - Box downgrades are too kind. Perhaps change to 10 points for the whole manoeuvre 7.5 degrees outside the box, rather than 15 degrees.\
 fixed 16/05/2024 - TD - Intra track visiblity round loops doesn't make much sense.\
 fixed 15/05/2024 - TD - inter visilibility, consider size of the element, smaller elements are harder to see and have larger ratio errors so are disproportionately harsh.\

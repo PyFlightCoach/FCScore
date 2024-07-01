@@ -14,3 +14,4 @@ to stop the server:
 ```bash
     docker compose down
 ```
+\
