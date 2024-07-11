@@ -13,7 +13,7 @@ JT - error in P25 template when it is run through FCSCore.\
 TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.
 AU - add option to manually edit scores for failed analyses.
 
-#### Client: next, Server: next
+#### v0.1.4: next, Server: v0.1.3
 Move Intra criteria from element to element definition to allow other disciplines and more refined tailoring of criteria selection.\
 Allow speed and track errors on lines before and after stallturns and spins.\
 Fix intra speed criteria where it was giving incorrect values in some cases.\
