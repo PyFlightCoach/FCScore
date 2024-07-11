@@ -2,7 +2,6 @@
 
 #### Outstanding Issues / Features
 AU - Corrected template often does not look all that close to the flown data. perhaps an issue with averaging.\
-TD - Line before and after spin and stallturn is scored as a normal line, where track criteria should be relaxed\
 TD - Snaps and spins are not currently assessed\
 AU - Need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.\
 TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
@@ -12,12 +11,23 @@ AU - error when no velocity data is available in the fc json.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 JT - error in P25 template when it is run through FCSCore.\
 TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.
-TD - remove speed criteria around stallturns and spins.
-TD - error in speed criteria, goes to zero in some cases. 
+AU - add option to manually edit scores for failed analyses.
+
+#### Client: next, Server: next
+Move Intra criteria from element to element definition to allow other disciplines and more refined tailoring of criteria selection.\
+Allow speed and track errors on lines before and after stallturns and spins.\
+Fix intra speed criteria where it was giving incorrect values in some cases.\
+Better version handling in client.\
+Add fa_version to score message in case server is changed mid analysis.\
+Refactor alignment optimisation, minor bug fixes.
+
+#### Client: v0.1.3, Server: v0.1.2
+Label browser tab with schedule and fcj name.
 
 #### Client: v0.1.2, Server: v0.1.2
 Add example flight.\
 Add instructions to main page.\
+reduce visibility factor weigting from 0.2 to 0.1 for errors parallel to view vector.\
 add variable convolve width for different kinds of intra criteria.
 
 #### Client: v0.1.1, Server: v0.1.1
@@ -132,6 +142,9 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 11/07/2024 - TD - Line before and after spin and stallturn is scored as a normal line, where track criteria should be relaxed\
+fixed 11/07/2024 - TD - remove speed criteria around stallturns and spins.
+fixed 11/07/2024 - TD - error in speed criteria, goes to zero in some cases. 
 fixed 01/07/2024 - TD - reduce or remove smoothing on intra track criteria as downgrades are missed in short elements and this data is less noisy than curvature or roll angle.
 fixed 16/05/2024 - TD - Box downgrades are too kind. Perhaps change to 10 points for the whole manoeuvre 7.5 degrees outside the box, rather than 15 degrees.\
 fixed 16/05/2024 - TD - Intra track visiblity round loops doesn't make much sense.\
