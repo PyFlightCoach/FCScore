@@ -12,8 +12,19 @@ AU - include some kind of weighting to make longer manoeuvres be judged less har
 JT - error in P25 template when it is run through FCSCore.\
 TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.
 AU - add option to manually edit scores for failed analyses.
+AM - stallturn track critetia should be removed in y as well as z.
+AM - snap roll angle error is measured at end of autorotation and recovery, this is double accounting.
 
-#### v0.1.4: next, Server: v0.1.3
+#### Client: next, Server: next
+Adjust intra ratio criteria, increase slope and reduce max limit, increase smoothing.\
+Adjust intra ratio criteria so negative values show as 0 to give max dg.
+
+#### Client: v0.1.4, Server: v0.1.4
+Add run button to client score table to re-run individual manoeuvres.\
+Fix bug in loop intra roll angle which was always showing 0.\
+reduce averaging width for intra track errors.
+
+#### Client: v0.1.4, Server: v0.1.3
 Move Intra criteria from element to element definition to allow other disciplines and more refined tailoring of criteria selection.\
 Allow speed and track errors on lines before and after stallturns and spins.\
 Fix intra speed criteria where it was giving incorrect values in some cases.\
