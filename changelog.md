@@ -2,7 +2,6 @@
 
 #### Outstanding Issues / Features
 AU - Corrected template often does not look all that close to the flown data. perhaps an issue with averaging.\
-TD - Snaps and spins are not currently assessed\
 AU - Need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.\
 TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
 TD - Can't handle cross box start / finish of manoeuvres for IMAC.
@@ -12,12 +11,19 @@ AU - include some kind of weighting to make longer manoeuvres be judged less har
 JT - error in P25 template when it is run through FCSCore.\
 TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.
 AU - add option to manually edit scores for failed analyses.
-AM - stallturn track critetia should be removed in y as well as z.
-AM - snap roll angle error is measured at end of autorotation and recovery, this is double accounting.
 
 #### Client: next, Server: next
-Adjust intra ratio criteria, increase slope and reduce max limit, increase smoothing.\
-Adjust intra ratio criteria so negative values show as 0 to give max dg.
+update measurements so the ratio calculation is performed on construction if necessary.\
+Adjust ratio calculation so expected value is zero (ratio of 1), negative values are for 1/ratio if ratio <1, positive values when ratio > 1.\
+new snap and spin elements to replace old break, autorotation and recovery elements.\
+seperate smoothing into a seperate process, rather than including it in the criteria, make smoothing configurable per eldef.\
+Add concept of selectors, to downselect the data within an element that is passed to the criteria.\
+apply continuous criteria visibility factoring before smoothing the sample and getting downgrades.\
+Add downgrades for snap and spin.\
+update stallturn scoring.\
+add Peak criteria to downgrade the biggest absolute value in a sample.\
+replace ContRat and ContAbs with single continuous criteria.\
+replace intra element convolve smoothing with low pass filter.\
 
 #### Client: v0.1.4, Server: v0.1.4
 Add run button to client score table to re-run individual manoeuvres.\
@@ -153,6 +159,9 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 20/08/2024 - AM - stallturn track critetia should be removed in y as well as z.\
+fixed 20/08/2024 - AM - snap roll angle error is measured at end of autorotation and recovery, this is double accounting.\
+fixed 20/08/2024 - TD - Snaps and spins are not currently assessed\
 fixed 11/07/2024 - TD - Line before and after spin and stallturn is scored as a normal line, where track criteria should be relaxed\
 fixed 11/07/2024 - TD - remove speed criteria around stallturns and spins.
 fixed 11/07/2024 - TD - error in speed criteria, goes to zero in some cases. 
