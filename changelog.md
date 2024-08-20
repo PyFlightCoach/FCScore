@@ -2,15 +2,14 @@
 
 #### Outstanding Issues / Features
 AU - Corrected template often does not look all that close to the flown data. perhaps an issue with averaging.\
-AU - Need to consider case of no visible line between manoeuvres. Also where there is a short line it can be hard to split inside the line with the flight coach plotter.\
+AU - Need to consider case of no visible line between manoeuvres.\
 TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
 TD - Can't handle cross box start / finish of manoeuvres for IMAC.
-TD - pyodide server option\
 AU - error when no velocity data is available in the fc json.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 JT - error in P25 template when it is run through FCSCore.\
-TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.
-AU - add option to manually edit scores for failed analyses.
+TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.\
+AU - add option to manually edit scores for failed analyses.\
 
 #### Client: next, Server: next
 update measurements so the ratio calculation is performed on construction if necessary.\
