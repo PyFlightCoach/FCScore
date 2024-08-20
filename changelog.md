@@ -11,7 +11,7 @@ JT - error in P25 template when it is run through FCSCore.\
 TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.\
 AU - add option to manually edit scores for failed analyses.\
 
-#### Client: next, Server: next
+#### Client: 0.2.0, Server: 0.2.0
 update measurements so the ratio calculation is performed on construction if necessary.\
 Adjust ratio calculation so expected value is zero (ratio of 1), negative values are for 1/ratio if ratio <1, positive values when ratio > 1.\
 new snap and spin elements to replace old break, autorotation and recovery elements.\
