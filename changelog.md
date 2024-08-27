@@ -10,6 +10,21 @@ AU - include some kind of weighting to make longer manoeuvres be judged less har
 JT - error in P25 template when it is run through FCSCore.\
 TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.\
 AU - add option to manually edit scores for failed analyses.\
+TD - add more checks to entry line to make sure additional elements haven't been added.\
+TD - pitch break and nose drop downgrades are giving unintended downgrades occasionally. Perhaps just check for peak rate rather than 
+using a bounded criteria and add some other check to constrain optimisation.\
+TD - snap autorotation finishing before end angle in some cases.
+
+#### Client: v0.2.1, Server: v0.2.2
+fix bug in visibility factoring.\
+adjust curvature measurement so it gives -10 when curvature in wrong direction.\
+check spin alpha is in the correct direction, rather than just outside of bounds.\
+check the amount of yaw rotation on a stallturn, not just the end angle to zero flops.\
+Check that the data is at roughly 25Hz.\
+Add analysis status text to score summary table.\
+Improve intra scoring detailed information.\
+fix speed visibility factoring.\
+adjust spin criteria to check peak pitch rate.
 
 #### Client: 0.2.0, Server: 0.2.0
 update measurements so the ratio calculation is performed on construction if necessary.\
@@ -158,6 +173,10 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 23/08/2024 - TD - check the correct amount of yaw rotation is performed in a stallturn.\
+fixed 23/08/2024 - TD - check sign of spin alpha is correct for upright / inverted spins\
+fixed 22/08/2024 - TD - check curvature is in the right direction compared to the template\
+fixed 22/08/2024 - TD - error in application of visibility factors.\
 fixed 20/08/2024 - AM - stallturn track critetia should be removed in y as well as z.\
 fixed 20/08/2024 - AM - snap roll angle error is measured at end of autorotation and recovery, this is double accounting.\
 fixed 20/08/2024 - TD - Snaps and spins are not currently assessed\
