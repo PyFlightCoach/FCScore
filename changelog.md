@@ -11,9 +11,13 @@ JT - error in P25 template when it is run through FCSCore.\
 TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.\
 AU - add option to manually edit scores for failed analyses.\
 TD - add more checks to entry line to make sure additional elements haven't been added.\
-TD - pitch break and nose drop downgrades are giving unintended downgrades occasionally. Perhaps just check for peak rate rather than 
-using a bounded criteria and add some other check to constrain optimisation.\
 TD - snap autorotation finishing before end angle in some cases.
+TD - snap and spin alpha downgrade is too kind.
+
+#### Server: next
+correct schedule generation so missing line pad lengths are included.\
+bugfixes to measurements where wrong manoeuvres flown.\
+Adjust loop curvature criteria, increase cutoff frequency and increase minimum downgrade to 3.
 
 #### Client: v0.2.1, Server: v0.2.2
 fix bug in visibility factoring.\
@@ -173,6 +177,12 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 29/08/2024 - TD - pitch break and nose drop downgrades are giving unintended downgrades occasionally. Perhaps just check for peak rate rather than 
+using a bounded criteria and add some other check to constrain optimisation.\
+fixed 29/08/2024 - TD - count the number of loops performed for track z measurement, don't just check end track.\
+fixed 29/08/2024 - TD - stallturn yaw downgrade not working for flop\
+fixed 29/08/2024 - TD - stallturn speed downgrade, visibility factor being applied too early.\
+fixed 29/08/2024 - TD - loop sample is smoothed too much.\
 fixed 23/08/2024 - TD - check the correct amount of yaw rotation is performed in a stallturn.\
 fixed 23/08/2024 - TD - check sign of spin alpha is correct for upright / inverted spins\
 fixed 22/08/2024 - TD - check curvature is in the right direction compared to the template\
