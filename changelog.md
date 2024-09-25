@@ -3,18 +3,27 @@
 #### Outstanding Issues / Features
 AU - Corrected template often does not look all that close to the flown data. perhaps an issue with averaging.\
 AU - Need to consider case of no visible line between manoeuvres.\
-TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
 TD - Can't handle cross box start / finish of manoeuvres for IMAC.
 AU - error when no velocity data is available in the fc json.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
-JT - error in P25 template when it is run through FCSCore.\
 TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.\
 AU - add option to manually edit scores for failed analyses.\
 TD - add more checks to entry line to make sure additional elements haven't been added.\
+
+TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
+JT - error in P25 template when it is run through FCSCore.\
 TD - snap autorotation finishing before end angle in some cases.
 TD - snap and spin alpha downgrade is too kind.
 
-#### Server: next
+#### Client v0.3.0, Server v0.3.0
+Change flight data loading so bin is parsed in the client and state data generated on the server.\
+Include box definition and manoeuvre splitting in the client.\
+refactor box scoring to make it more flexible to work with full size aerobatics.\
+Include full size glider schedule.\
+split loop curvature and roll rate downgrades into two, one for the shape and one for smoothness.\
+restructure client data structures.
+
+#### Server: v0.2.3
 correct schedule generation so missing line pad lengths are included.\
 bugfixes to measurements where wrong manoeuvres flown.\
 Adjust loop curvature criteria, increase cutoff frequency and increase minimum downgrade to 3.
