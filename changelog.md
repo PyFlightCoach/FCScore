@@ -3,17 +3,15 @@
 #### Outstanding Issues / Features
 AU - Corrected template often does not look all that close to the flown data. perhaps an issue with averaging.\
 AU - Need to consider case of no visible line between manoeuvres.\
-TD - Can't handle cross box start / finish of manoeuvres for IMAC.
-AU - error when no velocity data is available in the fc json.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.\
 AU - add option to manually edit scores for failed analyses.\
-TD - add more checks to entry line to make sure additional elements haven't been added.\
 
-TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
-JT - error in P25 template when it is run through FCSCore.\
-TD - snap autorotation finishing before end angle in some cases.
-TD - snap and spin alpha downgrade is too kind.
+#### Client v0.3.3, Server v0.3.4
+various bug fixes to flight data and bin parsing.\
+Box positionoing bugfixes.\
+New analysis export format.\
+Include full size advanced and unlimited schedules.\
 
 #### Client v0.3.0, Server v0.3.0
 Change flight data loading so bin is parsed in the client and state data generated on the server.\
@@ -186,6 +184,13 @@ Force direction of template generation to be correct wrt first manoeuvre in sequ
 Start of changelog
 
 #### Closed Issues
+fixed 20/10/2024 - TD - Can't handle cross box start / finish of manoeuvres for IMAC.
+fixed 20/10/2024 - AU - error when no velocity data is available in the fc json.\
+fixed 20/10/2024 - TD - add more checks to entry line to make sure additional elements haven't been added.\
+fixed 20/10/2024 - TD - Allow picking up some of previous / next manoeuvre when splitting has been done poorly.\
+fixed 20/10/2024 - JT - error in P25 template when it is run through FCSCore.\
+fixed 20/10/2024 - TD - snap autorotation finishing before end angle in some cases.
+fixed 20/10/2024 - TD - snap and spin alpha downgrade is too kind.
 fixed 29/08/2024 - TD - pitch break and nose drop downgrades are giving unintended downgrades occasionally. Perhaps just check for peak rate rather than 
 using a bounded criteria and add some other check to constrain optimisation.\
 fixed 29/08/2024 - TD - count the number of loops performed for track z measurement, don't just check end track.\
