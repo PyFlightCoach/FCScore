@@ -6,6 +6,18 @@ AU - Need to consider case of no visible line between manoeuvres.\
 AU - include some kind of weighting to make longer manoeuvres be judged less harshly.\
 TD - add short element between opposing rolls to fix alignment issues when a pause is flown. Include length downgrade for it.\
 AU - add option to manually edit scores for failed analyses.\
+TD - inter visibility currently hard coded for trianular box.\
+TD - roll rate dg missing in iac dg application.\
+TD - IAC rolling circles should be using vertical track not attitude.\
+TD - snaps are not bounded properly, over rotations can be corrected for free. reconsider snap dgs.\
+TD - IAC roll angle dgs not harsh enough.\
+TD - roll - loop combos, visible (or not visible) pause downgraded too harshly.\
+TD - consider high pass roll angle filter to pick up obvious changes.\
+TD - FS curvature smoothness too kind.
+
+#### Client next, Server next
+add schedule info to schedule definition json.\
+handle schedules that start crossbox.
 
 #### Client v0.3.3, Server v0.3.4
 various bug fixes to flight data and bin parsing.\
