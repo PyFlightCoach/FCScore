@@ -15,9 +15,12 @@ TD - roll - loop combos, visible (or not visible) pause downgraded too harshly.\
 TD - consider high pass roll angle filter to pick up obvious changes.\
 TD - FS curvature smoothness too kind.
 
-#### Client next, Server next
+### Client next, Server next
+make loop radius inter less 
+
+#### Client v0.3.3, Server v0.3.5
 add schedule info to schedule definition json.\
-handle schedules that start crossbox.
+handle schedules that start crossbox.\
 
 #### Client v0.3.3, Server v0.3.4
 various bug fixes to flight data and bin parsing.\
